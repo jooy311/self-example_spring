@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.css">
+</head>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
@@ -92,6 +95,7 @@ button:hover {
 
     <div class="clearfix">
       <button type="submit" class="signupbtn">login</button>
+      <a href="${pageContext.request.contextPath }/join" class="btn btn-default pull-right" id="btn">회원가입하기</a>
     </div>
   </div>
 </form>
