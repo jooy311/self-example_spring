@@ -10,20 +10,6 @@
 		</layout>
 	</appender>
 	
-	<appender name="sample" class="org.apache.log4j.ConsoleAppender">
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%c{1} 클래스의 %M 메소드 - %m%n" />
-		</layout>
-	</appender>
-	
-	<appender name="dailyLogFile" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="daily.log"/>
-		<param name="DatePattern" value=".yyyy-MM-dd"/>
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%d{HH:mm:ss}]%-5p : %c - %m%n" />
-		</layout>
-	</appender>
-	
 	<!-- Application Loggers -->
 	<logger name="com.mini.board">
 		<level value="info" />
@@ -57,37 +43,22 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
-	
-	<!-- jdbc.sqlonly : 완성된 SQL 명령 기록 -->
+
 	<logger name="jdbc.sqlonly">
 		<level value="info"/>
 	</logger>
-	
-	<!-- jdbc.sqltiming : SQL 명령의 실행시간(ms) 기록 -->
+
 	<logger name="jdbc.sqltiming">
 		<level value="info"/>
 	</logger>
 	
-	<!-- jdbc.audit : ResultSet 관련 정보를 제외한 모든 JDBC 관련 정보 기록 -->
 	<logger name="jdbc.audit">
 		<level value="info"/>
 	</logger>
 	
-	<!-- jdbc.resultset : ResultSet 관련 정보를 포함한 모든 JDBC 관련 정보 기록 -->
-	<!-- <logger name="jdbc.resultset">
-		<level value="info"/>
-	</logger> -->
-	
-	<!-- jdbc.resultsettable : ResultSet 관련 정보를 테이블 형식으로 기록 -->
 	<logger name="jdbc.resultsettable">
 		<level value="info"/>
 	</logger>
-	
-	<!-- jdbc.connection : Connection 관련 정보 기록 - Open 또는 Close -->
-	<logger name="jdbc.connection">
-		<level value="info"/>
-	</logger>
-	
 
 	<!-- Root Logger -->
 	<root>
