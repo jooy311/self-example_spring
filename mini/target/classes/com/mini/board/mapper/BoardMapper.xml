@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mini.board.mapper.BoardMapper">
+
+	<resultMap type="Board" id="mapBoard">
+		<id column="board_code" property="boardCode"/>
+		<result column="board_title" property="boardTitle"/>
+		<result column="board_contents" property="boardContents"/>
+		<result column="writer_id" property="writerId"/>
+		<result column="writer" property="writer"/>
+		<result column="count_view" property="countView"/>
+		<result column="write_date" property="writeDate"/>
+	</resultMap>
+
+	<insert id="create">
+		<selectKey resultType="int" keyProperty="boardCode" order="BEFORE">
+			select board_seq.nextval from dual
+		</selectKey>
+		insert into board values(#{boardCode}, #{boardTitle}, #{boardContents}, #{writerId}, #{writer}, #{countView}, #{writeDate})
+	</insert>
+	
+	<select id="listAll" parameterType="Board" resultMap="mapBoard">
+		select * from board
+	</select>
+	
+	<select id="read" parameterType="Board" resultMap="mapBoard">
+		select * from board where board_code = #{boardCode}
+	</select>
+	
+	<delete id="delete">
+		delete from board where board_code = #{boardCode}
+	</delete>
+	
+	<update id="update">
+		update board set board_title =#{boardTitle}, board_contents = #{boardContents} where board_code = #{boardCode}
+	</update>
+	
+	<update id="updateCount">
+		update board set count_view = count_view + 1 where board_code = #{boardCode}
+	</update>
+</mapper>
